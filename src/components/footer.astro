@@ -1,1 +1,25 @@
-<footer>This will be the footer</footer>
+---
+const footerLinks = [
+	{ href: 'https://github.com/damtzi', text: 'github' },
+	{ href: 'https://bsky.app/profile/damitzi.bsky.social', text: 'bluesky' },
+	{ href: 'https://www.instagram.com/damitzi__', text: 'instagram' },
+	{ href: 'mailto:damian.tziamtzis@gmail.com', text: 'email' }
+];
+---
+
+<footer>
+	<div class="flex items-center justify-center">
+		{
+			footerLinks.map((link) => (
+				<a
+					href={link.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="mx-2 transition-colors duration-150 ease-out hover:text-pure-blue hover:cursor-pointer"
+				>
+					{link.text}
+				</a>
+			))
+		}
+	</div>
+</footer>
