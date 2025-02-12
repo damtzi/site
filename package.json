@@ -11,9 +11,18 @@
         "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\""
     },
     "dependencies": {
+        "@astrojs/react": "^4.2.0",
         "@astrojs/tailwind": "^6.0.0",
+        "@fontsource/ibm-plex-serif": "^5.1.1",
         "@tailwindcss/vite": "^4.0.4",
+        "@types/react": "^19.0.8",
+        "@types/react-dom": "^19.0.3",
         "astro": "^5.2.0",
+        "lucide-astro": "^0.473.0",
+        "lucide-react": "^0.475.0",
+        "motion": "^12.4.2",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
         "tailwindcss": "^4.0.4"
     },
     "devDependencies": {
