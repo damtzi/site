@@ -7,19 +7,17 @@ const footerLinks = [
 ];
 ---
 
-<footer>
-	<div class="flex items-center justify-center">
-		{
-			footerLinks.map((link) => (
-				<a
-					href={link.href}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="mx-2 transition-colors duration-150 ease-out hover:text-pure-blue hover:cursor-pointer"
-				>
-					{link.text}
-				</a>
-			))
-		}
-	</div>
+<footer class="flex items-center justify-center">
+	{
+		footerLinks.map((link) => (
+			<a
+				href={link.href}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="mx-2 transition-colors duration-150 ease-out hover:text-pure-blue hover:cursor-pointer"
+			>
+				{link.text}
+			</a>
+		))
+	}
 </footer>

@@ -5,13 +5,17 @@
     --color-off-white: #f2f0ef;
     --color-pure-blue: #0007fb;
 
-    --font-magiel: Magiel, 'sans-serif';
+    --font-lora: 'Lora', 'sans-serif';
+    --font-ibm: 'IBM Plex Serif', 'sans-serif';
 }
 
-@font-face {
+@custom-variant dark (&:where(.dark, .dark *));
+/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
+
+/* @font-face {
     font-family: 'Magiel';
     src: url('/fonts/Magiel-Black/Magiel-Black.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
-}
+} */

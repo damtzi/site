@@ -1,1 +1,18 @@
-<nav>This will be the header / nav</nav>
+---
+import { Image } from 'astro:assets';
+import pureBlueImg from '../assets/0007fb.png';
+import { Moon } from 'lucide-astro';
+import { ThemeToggle } from './theme-toggle';
+---
+
+<nav class="flex items-center justify-between font-ibm">
+	<div class="flex items-center gap-2">
+		<Image src={pureBlueImg} alt="Pure blue, hex code #0007FB." class="rounded-full" width={30} height={30} />
+		<div class="flex flex-col">
+			<span>Damian Tziamtzis</span>
+			<span class="text-black/50 dark:text-off-white/60">Web Developer</span>
+		</div>
+	</div>
+	<ThemeToggle client:load />
+	<!-- <div class=""><Moon class="w-6 h-6" /></div>     -->
+</nav>

@@ -1,8 +1,11 @@
 ---
 import '~/styles/global.css';
+import '@fontsource/ibm-plex-serif';
 import Nav from '~/components/nav.astro';
 import Footer from '~/components/footer.astro';
 import Noise from '~/components/noise.astro';
+import { ClientRouter } from 'astro:transitions';
+import Theme from '~/components/theme.astro';
 ---
 
 <html lang="en">
@@ -12,10 +15,15 @@ import Noise from '~/components/noise.astro';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>damitzi</title>
+		<Theme />
+		<ClientRouter />
 	</head>
-	<body class="relative antialised bg-off-white text-black">
+	<body
+		class="relative transition-colors duration-300 ease-out antialised bg-off-white dark:bg-gray-950 text-black dark:text-off-white"
+		transition:persist
+	>
 		<!-- <Noise /> -->
-		<div class="min-h-screen flex flex-col mx-auto max-w-3xl px-4 py-8">
+		<div class="min-h-screen flex flex-col mx-auto max-w-3xl px-4 py-8 gap-8 font-ibm">
 			<Nav />
 			<main class="flex-grow">
 				<slot />
