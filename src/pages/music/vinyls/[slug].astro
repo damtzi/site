@@ -1,0 +1,69 @@
+---
+import BaseLayout from '~/layouts/base-layout.astro';
+import { type DiscogResponse } from '~/lib/types';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+	// const posts = [
+	// 	{
+	// 		slug: 'first-post',
+	// 		title: 'My First Post',
+	// 		content: 'This is my first blog post'
+	// 	},
+	// 	{
+	// 		slug: 'second-post',
+	// 		title: 'My Second Post',
+	// 		content: 'This is my second blog post'
+	// 	}
+	// ];
+
+	const response = await fetch(
+		`https://api.discogs.com/users/damitzi__/collection/folders/0/releases?token=${import.meta.env.DISCOG_TOKEN}&per_page=100&sort=artist`
+	);
+	const data = (await response.json()) as DiscogResponse;
+
+	return data.releases.map((release) => ({
+		params: { slug: release.basic_information.title },
+		props: { release }
+	}));
+}
+
+const { release } = Astro.props;
+console.log(release.basic_information.formats);
+---
+
+<BaseLayout>
+	<div class="flex flex-col gap-4">
+		<h1 class="text-4xl">{release.basic_information.title}</h1>
+		Go back
+		<div class="flex flex-col md:flex-row gap-4">
+			<Image
+				src={release.basic_information.cover_image}
+				alt={release.basic_information.title}
+				width={400}
+				height={400}
+				transition:name={`playlist ${release.id + '_a'} image`}
+			/>
+			<div class="flex flex-col gap-4">
+				<h2>
+					{release.basic_information.title}
+				</h2>
+				<span>
+					{release.basic_information.artists.map((artist) => artist.name).join(', ')}
+				</span>
+				<span>
+					{release.basic_information.labels.map((label) => label.name).join(', ')}
+				</span>
+				<span>
+					{release.basic_information.formats[0].name} - {release.basic_information.formats[0].text}
+				</span>
+				<span>
+					{release.basic_information.year}
+				</span>
+				<span>
+					{release.basic_information.genres.join(', ')}
+				</span>
+			</div>
+		</div>
+	</div>
+</BaseLayout>
