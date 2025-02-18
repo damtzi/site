@@ -11,6 +11,7 @@
         "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\""
     },
     "dependencies": {
+        "@astrojs/mdx": "^4.0.8",
         "@astrojs/react": "^4.2.0",
         "@astrojs/tailwind": "^6.0.0",
         "@astrojs/vercel": "^8.0.7",
@@ -18,7 +19,7 @@
         "@tailwindcss/vite": "^4.0.4",
         "@types/react": "^19.0.8",
         "@types/react-dom": "^19.0.3",
-        "astro": "^5.2.0",
+        "astro": "^5.3.0",
         "lucide-astro": "^0.473.0",
         "lucide-react": "^0.475.0",
         "motion": "^12.4.2",

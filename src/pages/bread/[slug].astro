@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import Layout from '~/layouts/base-layout.astro';
+
+export interface Props {
+	recipe: CollectionEntry<'recipes'>;
+}
+
+export const getStaticPaths = async () => {
+	const recipes = await getCollection('recipes');
+	return recipes.map((recipe) => ({
+		params: { slug: recipe.data.slug },
+		props: { recipe }
+	}));
+};
+
+const { recipe } = Astro.props;
+const { Content } = await render(recipe);
+---
+
+<Layout>
+	<div>
+		<article>
+			<h1 class="md:!text-5xl md:!leading-[1.2]">{recipe.data.title}</h1>
+			<p class="lead">{recipe.data.content}</p>
+			<div>
+				<Content />
+			</div>
+		</article>
+	</div>
+</Layout>
