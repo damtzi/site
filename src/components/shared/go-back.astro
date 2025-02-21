@@ -1,0 +1,60 @@
+---
+interface Props {
+    class?: string;
+    fallbackPath: string;
+    text?: string;
+}
+
+const { class: className, fallbackPath, text = 'Go Back' } = Astro.props;
+---
+
+<a
+    href={fallbackPath}
+    data-go-back
+    class:list={['inline-flex items-center gap hover:underline', className]}
+>
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    >
+        <path d="m15 18-6-6 6-6"></path>
+    </svg>
+    <span>{text}</span>
+</a>
+
+<script>
+    import { supportsViewTransitions } from 'astro:transitions/client';
+
+    if (supportsViewTransitions) {
+        document.addEventListener('astro:page-load', initGoBack);
+    } else {
+        initGoBack();
+    }
+
+    function initGoBack() {
+        const backButton = document.querySelector('[data-go-back]');
+        const hasHistory = history.length > 1;
+        const referrer = document.referrer;
+        const isSameOrigin =
+            referrer && new URL(referrer).origin === window.location.origin;
+        console.log('referrer', referrer);
+        console.log('window', window.location.origin);
+        console.log('history', history);
+        backButton?.addEventListener('click', (e) => {
+            if (hasHistory && isSameOrigin) {
+                console.log('Going back with history!!!!!!!');
+                e.preventDefault();
+                history.back();
+            }
+            console.log('Going back');
+            // If conditions aren't met, it will use the fallback href
+        });
+    }
+</script>
