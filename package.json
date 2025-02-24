@@ -15,7 +15,10 @@
         "@astrojs/react": "^4.2.0",
         "@astrojs/tailwind": "^6.0.0",
         "@astrojs/vercel": "^8.0.7",
-        "@fontsource/ibm-plex-serif": "^5.1.1",
+        "@fontsource-variable/hanken-grotesk": "^5.1.1",
+        "@fontsource-variable/lexend": "^5.1.2",
+        "@fontsource-variable/playfair-display": "^5.1.1",
+        "@fontsource/lato": "^5.1.1",
         "@tailwindcss/vite": "^4.0.4",
         "@types/react": "^19.0.8",
         "@types/react-dom": "^19.0.3",
@@ -29,6 +32,7 @@
         "tailwindcss": "^4.0.4"
     },
     "devDependencies": {
+        "@tailwindcss/typography": "^0.5.16",
         "prettier": "^3.4.2",
         "prettier-plugin-astro": "^0.14.1",
         "typescript": "^5.7.3"
