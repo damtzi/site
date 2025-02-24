@@ -7,20 +7,12 @@ import Arrow from '~/components/shared/arrow.astro';
 
 <BaseLayout>
     <div class="flex flex-col gap-4">
-        <h1 class="text-4xl font-playfair">Music</h1>
+        <h1 class="text-4xl font-playfair">Recipes</h1>
         <Breadcrumbs />
         <ul class="space-y-2">
             <li class="flex items-center group gap-2">
                 <Arrow />
-                <Link url="/music/playlists" title="My playlists" internal />
-            </li>
-            <li class="flex items-center group gap-2">
-                <Arrow />
-                <Link url="/music/vinyls" title="My vinyls" internal />
-            </li>
-            <li class="flex items-center group gap-2">
-                <Arrow />
-                <Link url="/music/albums" title="My albums" internal />
+                <Link url="/bread/first-recipe" title="Recipe #1" internal />
             </li>
         </ul>
     </div>
