@@ -1,37 +1,38 @@
 ---
 import BaseLayout from '~/layouts/base-layout.astro';
-import Link from '~/components/shared/link.astro';
 import { type DiscogResponse } from '~/lib/types';
+import { slugify } from '~/lib/utils';
 import { Image } from 'astro:assets';
-import { ChevronLeft } from 'lucide-astro';
+import Breadcrumbs from '~/components/shared/breadcrumbs.astro';
 
 const response = await fetch(
-	`https://api.discogs.com/users/damitzi__/collection/folders/0/releases?token=${import.meta.env.DISCOG_TOKEN}&per_page=100&sort=artist`
+    `https://api.discogs.com/users/damitzi__/collection/folders/0/releases?token=${import.meta.env.DISCOG_TOKEN}&per_page=100&sort=artist`
 );
 const data = (await response.json()) as DiscogResponse;
 ---
 
 <BaseLayout>
-	<div class="flex flex-col gap-4">
-		<h1 class="text-4xl">Music</h1>
-		<a href="/music" class="hover:cursor-pointer flex">
-			<ChevronLeft />
-			Go back
-		</a>
-		<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-			{
-				data.releases.map((release) => (
-					<a href={`/music/vinyls/${release.basic_information.title}`} class="hover:cursor-pointer">
-						<Image
-							src={release.basic_information.cover_image}
-							alt={release.basic_information.title}
-							width={200}
-							height={200}
-							transition:name={`playlist ${release.id + '_a'} image`}
-						/>
-					</a>
-				))
-			}
-		</div>
-	</div>
+    <div class="flex flex-col gap-4">
+        <h1 class="text-4xl font-playfair">Music</h1>
+        <Breadcrumbs />
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {
+                data.releases.map((release) => (
+                    <a
+                        href={`/music/vinyls/${slugify(release.basic_information.title)}`}
+                        class="hover:cursor-pointer"
+                    >
+                        <Image
+                            src={release.basic_information.cover_image}
+                            alt={release.basic_information.title}
+                            width={200}
+                            height={200}
+                            class="hover:-translate-y-2 transition-transform duration-300 rounded-xs"
+                            transition:name={`playlist ${release.id + '_a'} image`}
+                        />
+                    </a>
+                ))
+            }
+        </div>
+    </div>
 </BaseLayout>
