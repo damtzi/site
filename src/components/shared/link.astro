@@ -3,21 +3,21 @@ const { url, title, internal } = Astro.props;
 ---
 
 {
-	internal ? (
-		<a
-			href={url}
-			class="transition-colors duration-150 ease-out decoration-pure-blue underline underline-offset-2 text-black/60 dark:text-gray-400 hover:text-pure-blue hover:cursor-pointer"
-		>
-			{title}
-		</a>
-	) : (
-		<a
-			href={url}
-			class="transition-colors duration-150 ease-out decoration-pure-blue underline underline-offset-2 text-black/60 dark:text-gray-400 hover:text-pure-blue hover:cursor-pointer"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			{title}
-		</a>
-	)
+    internal ? (
+        <a
+            href={url}
+            class="transition-colors duration-150 ease-out text-black/50 dark:text-off-white/60 hover:text-pure-blue hover:cursor-pointer"
+        >
+            {title}
+        </a>
+    ) : (
+        <a
+            href={url}
+            class="transition-colors duration-150 ease-out text-black/50 dark:text-off-white/60 hover:text-pure-blue hover:cursor-pointer"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            {title}
+        </a>
+    )
 }

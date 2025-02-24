@@ -8,26 +8,33 @@ interface Props {
 const { class: className, fallbackPath, text = 'Go Back' } = Astro.props;
 ---
 
-<a
-    href={fallbackPath}
-    data-go-back
-    class:list={['inline-flex items-center gap hover:underline', className]}
->
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+<div>
+    <a
+        href={fallbackPath}
+        data-go-back
+        class:list={[
+            'group inline-flex items-center px-1 py-1.5 transition',
+            className
+        ]}
     >
-        <path d="m15 18-6-6 6-6"></path>
-    </svg>
-    <span>{text}</span>
-</a>
+        <svg
+            class="mr-2 -ml-1 stroke-black dark:stroke-off-white stroke-2"
+            fill="none"
+            width="10"
+            height="10"
+            viewBox="0 0 10 10"
+            aria-hidden="true"
+        >
+            <path
+                class="opacity-0 transition group-hover:opacity-100"
+                d="M10 5h-7"></path>
+            <path
+                class="transition group-hover:translate-x-[-3px]"
+                d="M9 1L5 5l4 4"></path>
+        </svg>
+        {text}
+    </a>
+</div>
 
 <script>
     import { supportsViewTransitions } from 'astro:transitions/client';
