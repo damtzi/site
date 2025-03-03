@@ -51,9 +51,7 @@ const { class: className, fallbackPath, text = 'Go Back' } = Astro.props;
         const referrer = document.referrer;
         const isSameOrigin =
             referrer && new URL(referrer).origin === window.location.origin;
-        console.log('referrer', referrer);
-        console.log('window', window.location.origin);
-        console.log('history', history);
+
         backButton?.addEventListener('click', (e) => {
             if (hasHistory && isSameOrigin) {
                 console.log('Going back with history!!!!!!!');
