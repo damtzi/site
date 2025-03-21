@@ -24,7 +24,7 @@ const { recipe } = Astro.props;
 const { Content } = await render(recipe);
 ---
 
-<Layout>
+<Layout title={`damitzi | ${recipe.data.title}`}>
     <article class="flex flex-col gap-4">
         <h1 class="text-4xl font-playfair">{recipe.data.title}</h1>
         <Breadcrumbs />

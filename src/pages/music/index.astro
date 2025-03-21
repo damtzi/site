@@ -7,7 +7,7 @@ import Breadcrumbs from '~/components/shared/breadcrumbs.astro';
 import Arrow from '~/components/shared/arrow.astro';
 ---
 
-<BaseLayout>
+<BaseLayout title="damitzi | music">
     <div class="flex flex-col gap-4">
         <h1 class="text-4xl font-playfair">Music</h1>
         <Breadcrumbs />
@@ -19,10 +19,6 @@ import Arrow from '~/components/shared/arrow.astro';
             <li class="flex items-center group gap-2">
                 <Arrow />
                 <Link url="/music/vinyls" title="My vinyls" internal />
-            </li>
-            <li class="flex items-center group gap-2">
-                <Arrow />
-                <Link url="/music/albums" title="My albums" internal />
             </li>
         </ul>
     </div>

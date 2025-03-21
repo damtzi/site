@@ -10,6 +10,12 @@ import Cursor from '~/components/cursor.astro';
 import Noise from '~/components/noise.astro';
 import { ClientRouter } from 'astro:transitions';
 import Theme from '~/components/theme.astro';
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -18,7 +24,7 @@ import Theme from '~/components/theme.astro';
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <title>damitzi</title>
+        <title>{title}</title>
         <Theme />
         <ClientRouter />
     </head>
